@@ -1,5 +1,6 @@
 "use strict";
 
+const values = require('object.values');
 const Vis = require('./graphvis');
 const ModelTemplate = require('./lib/templates/model');
 const AssociationTemplate = require('./lib/templates/association');
@@ -7,7 +8,7 @@ const AssociationTemplate = require('./lib/templates/association');
 module.exports = (path) => {
   const db = typeof path === 'string' ? require(path) : path;
   const Sequelize = db.constructor;
-  const models = Object.values(db.models);
+  const models = values(db.models);
   const modelTemplate = new ModelTemplate(Sequelize);
   const associationTemplate = new AssociationTemplate();
   return Vis(`
