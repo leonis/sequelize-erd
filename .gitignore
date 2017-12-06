@@ -1,0 +1,14 @@
+# idea
+.idea
+
+# log
+logs
+
+# node
+node_modules
+
+# package
+package-lock.json
+
+# os x
+.DS_Store

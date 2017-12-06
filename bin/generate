@@ -2,8 +2,8 @@
 
 const program = require('commander');
 const sequelizeErd = require('../');
-const { writeFileSync } = require('fs');
-const { join } = require('path');
+const fs = require('fs');
+const path = require('path');
 
 program
   .version('1.0.7')
@@ -11,7 +11,7 @@ program
   .option('-d, --destination <path>', 'path to a location to save the ERD diagram', './erd.svg')
   .parse(process.argv);
 
-const svg = sequelizeErd(join(process.cwd(), program.source));
-writeFileSync(program.destination, svg);
+const svg = sequelizeErd(path.join(process.cwd(), program.source));
+fs.writeFileSync(program.destination, svg);
 
 setTimeout(() => process.exit(0), 800);
