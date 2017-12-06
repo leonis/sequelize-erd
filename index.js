@@ -7,9 +7,8 @@ const AssociationTemplate = require('./lib/templates/association');
 
 module.exports = (path) => {
   const db = typeof path === 'string' ? require(path) : path;
-  const Sequelize = db.constructor;
   const models = values(db.models);
-  const modelTemplate = new ModelTemplate(Sequelize);
+  const modelTemplate = new ModelTemplate();
   const associationTemplate = new AssociationTemplate();
   return Vis(`
     digraph models_diagram {
